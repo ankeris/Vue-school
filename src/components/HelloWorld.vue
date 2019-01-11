@@ -32,14 +32,14 @@
   import sourceData from '../data.json';
 
 export default {
-    name: 'HelloWorld',
-    data() {
-      return {
-        threads: sourceData.threads,
-        posts: sourceData.posts,
-        users: sourceData.users,
-      };
-    },
+      name: 'HelloWorld',
+      data() {
+          return {
+              threads: sourceData.threads,
+              posts: sourceData.posts,
+              users: sourceData.users,
+          };
+      },
 };
 </script>
 

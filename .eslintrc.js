@@ -24,6 +24,7 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+      'indent': ["warn", 4],
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 2 : 'off',
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
