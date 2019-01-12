@@ -3,7 +3,6 @@
         <h2>{{thread.title}}</h2>
         <div class="post-list">
             <div class="post" v-for="postId in thread.posts">
-
                 <div class="user-info">
                     <a class="user-name" href="#">{{users[posts[postId].userId].name}}</a>
                     <a href="#">
