@@ -32,7 +32,10 @@ export default {
             return sourceData.users[this.post.userId];
         },
         userPostsCount() {
-            return Object.keys(this.user.posts).length;
+            if (this.user.posts) {
+                return Object.keys(this.user.posts).length;
+            }
+            return 0;
         },
     },
 };
