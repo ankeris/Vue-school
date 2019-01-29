@@ -12,13 +12,16 @@
                     {{post.text}}
                 </div>
             </div>
-            <div class="post-date text-faded">
-                {{post.publishedAt}}
+            <div class="post-date text-faded"
+            :title="post.publishedAt | humanFriendlyDate"
+            >
+                {{post.publishedAt | howLongAgo }}
             </div>
     </div>
 </template>
 <script>
 import sourceData from '@/data.json';
+import moment from 'moment';
 
 export default {
     props: {
@@ -36,6 +39,15 @@ export default {
                 return Object.keys(this.user.posts).length;
             }
             return 0;
+        },
+
+    },
+    filters: {
+        humanFriendlyDate(date) {
+            return moment.unix(date).format('MMMM Do YYYY, h:mm:ss a');
+        },
+        howLongAgo(date) {
+            return moment.unix(date).fromNow();
         },
     },
 };
