@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import PageHome from '@/pages/PageHome';
 import PageThreadShow from '@/pages/PageThreadShow';
+import PageCategory from '@/pages/PageCategory';
 import PageForum from '@/pages/PageForum';
 import NotFound from '@/pages/NotFound';
 
@@ -13,6 +14,12 @@ export default new Router({
             path: '/',
             name: 'Home',
             component: PageHome,
+        },
+        {
+            path: '/category/:id',
+            name: 'PageCategory',
+            component: PageCategory,
+            props: true,
         },
         {
             path: '/forum/:id',

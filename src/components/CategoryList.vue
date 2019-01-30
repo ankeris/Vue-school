@@ -1,32 +1,29 @@
 <template>
     <div class="categories-list">
-    <h1 style="color: blue; background-color: black">{{category.name}}</h1>
-    <ForumList
-        :forums="forums"
-    ></ForumList>
+        <CategoryListItem v-for="category in categories" :category="category" :key="category['.key']" ></CategoryListItem>
     </div>
 </template>
 
 <script>
-    import ForumList from '@/components/ForumList';
+    import CategoryListItem from '@/components/CategoryListItem';
 
     export default {
         name: 'CategoryList',
         components: {
-            ForumList,
+            CategoryListItem,
         },
         props: {
-            category: {
+            categories: {
                 required: true,
-                type: Object,
+                type: Array,
             },
         },
     };
 </script>
 
 <style scoped>
- .categories-list {
-     width: 100%;
-     border: 1px solid green;
- }
+    .categories-list {
+        width: 100%;
+        border: 1px solid green;
+    }
 </style>

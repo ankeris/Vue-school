@@ -1,10 +1,6 @@
 <template>
   <div class="col-full">
-      <CategoryList
-          v-for="category in categories"
-          :category="category"
-          :key="category['.key']"
-      />
+      <CategoryList :categories="categories"/>
   </div>
 </template>
 
@@ -18,10 +14,14 @@ export default {
       },
       data() {
           return {
-              categories: Object.values(sourceData.categories),
               posts: sourceData.posts,
               users: sourceData.users,
           };
+      },
+      computed: {
+          categories() {
+              return Object.values(sourceData.categories);
+          },
       },
 };
 </script>
