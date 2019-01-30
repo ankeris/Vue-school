@@ -1,22 +1,24 @@
 <template>
   <div class="col-full">
-      <ThreadList
-      :threads="threads"
-      ></ThreadList>
+      <CategoryList
+          v-for="category in categories"
+          :category="category"
+          :key="category['.key']"
+      />
   </div>
 </template>
 
 <script>
   import sourceData from '@/data.json';
-  import ThreadList from '@/components/ThreadList';
+  import CategoryList from '@/components/CategoryList';
 
 export default {
       components: {
-          ThreadList,
+          CategoryList,
       },
       data() {
           return {
-              threads: Object.values(sourceData.threads),
+              categories: Object.values(sourceData.categories),
               posts: sourceData.posts,
               users: sourceData.users,
           };
