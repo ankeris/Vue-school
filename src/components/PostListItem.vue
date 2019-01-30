@@ -12,16 +12,13 @@
                     {{post.text}}
                 </div>
             </div>
-            <div class="post-date text-faded"
-            :title="post.publishedAt | humanFriendlyDate"
-            >
-                {{post.publishedAt | howLongAgo }}
-            </div>
+         <div class="post-date text-faded">
+            <AppDate :timestamp="post.publishedAt"></AppDate>
+         </div>
     </div>
 </template>
 <script>
 import sourceData from '@/data.json';
-import moment from 'moment';
 
 export default {
     props: {
@@ -41,14 +38,6 @@ export default {
             return 0;
         },
 
-    },
-    filters: {
-        humanFriendlyDate(date) {
-            return moment.unix(date).format('MMMM Do YYYY, h:mm:ss a');
-        },
-        howLongAgo(date) {
-            return moment.unix(date).fromNow();
-        },
     },
 };
 </script>

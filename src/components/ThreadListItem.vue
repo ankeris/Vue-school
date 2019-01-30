@@ -7,7 +7,7 @@
                 </router-link>
             </p>
             <p class="text-faded text-xsmall">
-                By <a href="#">{{user.name}}, {{thread.publishedAt}}</a>.
+                By <a href="#">{{user.name}}</a>. <AppDate :timestamp="thread.publishedAt"></AppDate>
             </p>
         </div>
 
@@ -21,8 +21,12 @@
 
 <script>
     import sourceData from '../data.json';
+    import App from '../App';
 
     export default {
+        components: {
+            App,
+        },
         props: {
             thread: {
                 required: true,
