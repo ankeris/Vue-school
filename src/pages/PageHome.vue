@@ -12,12 +12,6 @@ export default {
       components: {
           CategoryList,
       },
-      data() {
-          return {
-              posts: sourceData.posts,
-              users: sourceData.users,
-          };
-      },
       computed: {
           categories() {
               return Object.values(sourceData.categories);

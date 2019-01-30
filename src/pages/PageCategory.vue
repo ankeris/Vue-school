@@ -2,18 +2,18 @@
     <div class="forum-page">
         <h1>{{category.name}}</h1>
         <h2>Forums: </h2>
-        <ForumListItem v-for="forum in forums" :forum="forum" :key="forum['.key']"></ForumListItem>
+            <CategoryListItem :category="category"></CategoryListItem>
     </div>
 </template>
 
 <script>
     import sourceData from '@/data.json';
-    import ForumListItem from '@/components/ForumListItem';
+    import CategoryListItem from '@/components/CategoryListItem';
 
     export default {
         name: 'PageCategory',
         components: {
-            ForumListItem,
+            CategoryListItem,
         },
         props: {
             id: {
@@ -24,9 +24,6 @@
         computed: {
             category() {
                 return sourceData.categories[this.id];
-            },
-            forums() {
-                return Object.values(sourceData.forums).filter(forum => forum.categoryId === this.id);
             },
         },
     };
