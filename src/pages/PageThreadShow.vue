@@ -8,7 +8,6 @@
         <PostList :posts="posts"/>
         <PostEditor
         :threadId="id"
-        @save="addPost"
         />
     </div>
 </template>
@@ -38,18 +37,6 @@
             posts() {
                 const postIds = Object.values(this.thread.posts);
                 return Object.values(sourceData.posts).filter(post => postIds.includes(post['.key']));
-            },
-        },
-        methods: {
-            addPost({ post }) {
-                const postId = post['.key'];
-                this.$set(sourceData.posts, postId, post);
-                this.$set(this.thread.posts, postId, postId);
-            // if user doesn't have posts yet, create an object
-                if (!sourceData.users[post.userId].posts) {
-                    sourceData.users[post.userId].posts = {};
-                }
-                this.$set(sourceData.users[post.userId].posts, postId, postId);
             },
         },
     };

@@ -35,7 +35,7 @@ export default {
             };
 
             this.text = '';
-
+            this.$store.dispatch('createPost', post);
             this.$emit('save', { post });
         },
     },
