@@ -18,26 +18,23 @@
     </div>
 </template>
 <script>
+    import { countObjectProperties } from '@/helpers/index';
 
+    export default {
+        props: {
+            post: {
+                required: true,
+                type: Object,
+            },
+        },
+        computed: {
+            user() {
+                return this.$store.state.users[this.post.userId];
+            },
+            userPostsCount() {
+                return countObjectProperties(this.user.posts);
+            },
 
-export default {
-    props: {
-        post: {
-            required: true,
-            type: Object,
         },
-    },
-    computed: {
-        user() {
-            return this.$store.state.users[this.post.userId];
-        },
-        userPostsCount() {
-            if (this.user.posts) {
-                return Object.keys(this.user.posts).length;
-            }
-            return 0;
-        },
-
-    },
-};
+    };
 </script>

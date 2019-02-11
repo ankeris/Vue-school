@@ -21,7 +21,8 @@
 
 <script>
 
-    import App from '../App';
+    import { countObjectProperties } from '@/helpers/index';
+    import App from '@/App';
 
     export default {
         components: {
@@ -35,7 +36,7 @@
         },
         computed: {
             countPosts() {
-                return Object.keys(this.thread.posts).length - 1;
+                return countObjectProperties(this.thread.posts) - 1;
             },
             user() {
                 return this.$store.state.users[this.thread.userId];

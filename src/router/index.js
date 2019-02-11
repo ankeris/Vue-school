@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import PageHome from '@/pages/PageHome';
 import PageThreadShow from '@/pages/PageThreadShow';
+import PageThreadCreate from '@/pages/PageThreadCreate';
 import PageCategory from '@/pages/PageCategory';
 import PageForum from '@/pages/PageForum';
 import NotFound from '@/pages/NotFound';
@@ -29,6 +30,12 @@ export default new Router({
             props: true,
         },
         {
+            path: '/thread/create',
+            name: 'PageThreadCreate',
+            component: PageThreadCreate,
+            props: true,
+        },
+        {
             path: '/thread/:id',
             name: 'PageThreadShow',
             component: PageThreadShow,
@@ -39,6 +46,12 @@ export default new Router({
             name: 'PageProfile',
             component: PageProfile,
             props: true,
+        },
+        {
+            path: '/me/edit',
+            name: 'PageProfileEdit',
+            component: PageProfile,
+            props: { edit: true },
         },
         {
             path: '*',
