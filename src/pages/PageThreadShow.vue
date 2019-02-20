@@ -1,6 +1,6 @@
 <template>
     <div class="col-large push-top">
-        <h2>{{thread.title}}</h2>
+        <h2>{{thread.title}} <router-link :to="{name: 'PageThreadEdit', id: id}" class="btn-green btn-small">Edit</router-link></h2>
         <p>
             By <a href="#" class="link-unstyled">Robin</a>, <AppDate :timestamp="thread.publishedAt"/>.
             <span style="float:right; margin-top: 2px;" class="hide-mobile text-faded text-small">5 replies by 3 contributors</span>

@@ -29,6 +29,7 @@ export default new Vuex.Store({
             commit('setPost', { post, postId });
             commit('appendPostToThread', { postId, threadId: post.threadId  });
             commit('appendPostToUser', { postId, userId: post.userId  });
+            return Promise.resolve(state.posts[postId])
         },
         createThread({state, commit, dispatch}, {text, title, forumId}) {
             return new Promise((res, rej) => {
@@ -47,9 +48,24 @@ export default new Vuex.Store({
                 commit('setThread', {threadId, thread})
                 commit('appendThreadToUser', {threadId, userId})
                 commit('appendThreadToForum', {threadId, forumId})
-                dispatch('createPost', {text, threadId})
+                dispatch('createPost', {text, threadId}).then(post => {
+                    commit('setThread', {threadId, thread: {...thread, firstPostId: post['.key']}})
+                })
 
                 res(state.threads[threadId])
+            })
+        },
+        updateThread({state, commit, dispatch}, {title, text, id}) {
+            return new Promise((resolve, reject) => {
+                const thread = state.threads[id];
+                const post = state.posts[thread.firstPostId];
+                console.log(title);
+                const newThread = {...thread, title}
+                const newPost ={...post, text}
+
+                commit('setThread', {thread: newThread, threadId: id});
+                commit('setPost', {post: newPost, postId: thread.firstPostId})
+                resolve(newThread);
             })
         },
         updateUser({commit}, user) {

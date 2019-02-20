@@ -7,6 +7,7 @@ import PageCategory from '@/pages/PageCategory';
 import PageForum from '@/pages/PageForum';
 import NotFound from '@/pages/NotFound';
 import PageProfile from '@/pages/PageProfile';
+import PageThreadEdit from '@/pages/PageThreadEdit';
 
 Vue.use(Router);
 
@@ -39,6 +40,12 @@ export default new Router({
             path: '/thread/:id',
             name: 'PageThreadShow',
             component: PageThreadShow,
+            props: true,
+        },
+        {
+            path: '/thread/:id/edit',
+            name: 'PageThreadEdit',
+            component: PageThreadEdit,
             props: true,
         },
         {
